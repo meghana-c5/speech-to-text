@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Speech to Text</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+      integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+      crossorigin="anonymous"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="text-center mt-5">Speech to Text</h1>
+
+      <div class="form-group notes">
+        <!-- <button class="edit"><i class="fas fa-edit"></i></button> -->
+        <!-- <div class="main"></div> -->
+        <textarea
+          style="white-space: pre-wrap"
+          id="asPDF"
+          rows="6"
+          class="form-control"
+        ></textarea>
+      </div>
+      <div class="form-group">
+        <button id="start-btn" class="btn btn-primary btn-block">Start</button>
+        <button id="end-btn" class="btn btn-primary btn-block">End</button>
+        <p id="instructions">press start button</p>
+        <button id="cmd" class="btn btn-primary btn-block">as pdf</button>
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.min.js"></script>
+    <script>
+      var doc = new jsPDF();
+      $('#cmd').click(function () {
+        doc.text($('#asPDF').val(), 10, 10);
+        doc.save('Reason.pdf');
+      });
+    </script>
+  </body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="speech.js"></script>
+</html>
